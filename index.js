@@ -5,6 +5,7 @@ for (let i = 0; i < 7; i++) {
   document.querySelectorAll("button")[i].addEventListener("click", function(){
      let buttonInnerHtml = this.innerHTML;
      makeSound(buttonInnerHtml);
+     buttonAnimation(buttonInnerHtml);
   });
   
 }
@@ -56,4 +57,17 @@ function makeSound(key) {
 // Detecting keyboard press
 document.addEventListener("keydown",function(event){
     makeSound(event.key);
+    buttonAnimation(event.key);
 })
+
+
+// Button animation 
+
+ function buttonAnimation(currentKey)
+{
+  var activeButton = document.querySelector("."+currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function(){
+    activeButton.classList.remove("pressed")
+  },200);
+}
